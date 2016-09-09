@@ -1,0 +1,11 @@
+# Site settings
+title: Avenir
+email:
+description:
+baseurl: ""
+url: ""
+twitter_username:
+github_username:
+
+# Build settings
+markdown: kramdown

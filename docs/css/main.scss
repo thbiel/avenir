@@ -1,0 +1,83 @@
+---
+# Only the main Sass file needs front matter (the dashes are enough)
+---
+
+body {
+    font-family: 'Cantarell', sans-serif;
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
+    font-style:   normal;
+    font-weight:  normal;
+
+    background-color: #008DD0;
+    color: #00476E;
+}
+
+h1 {
+    font-size: 99px;
+}
+
+h2 {
+    font-size: 32px;
+}
+
+h3 {
+    font-size: 24px;
+}
+
+h4 {
+    font-size: 18px;
+}
+
+h5 {
+    font-size: 16px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: inherit;
+    font-weight:  400;
+}
+
+a {
+    color: inherit;
+}
+
+table {
+    color: inherit;
+}
+
+.emphasized {
+    text-shadow: #00476E 2px 2px 2px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    padding-right: 12px;
+}
+
+.textfont {
+    font-size: 16px;
+    font-weight: 400;
+    text-transform: none;
+}
+
+select {
+    -webkit-appearance: button;
+    -webkit-border-radius: 2px;
+    -webkit-box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+    -webkit-padding-end: 20px;
+    -webkit-padding-start: 2px;
+    -webkit-user-select: none;
+    background-position: center right;
+    background-repeat: no-repeat;
+    border: 1px solid #AAA;
+    color: #555;
+    -moz-use-system-font: false;
+    font-size: inherit;
+    margin: 0;
+    overflow: hidden;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
