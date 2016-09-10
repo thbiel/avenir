@@ -11,8 +11,6 @@ body {
     font-style:   normal;
     font-weight:  normal;
 
-    background-color: #008DD0;
-    color: #00476E;
 }
 
 h1 {
@@ -81,3 +79,8 @@ select {
     text-overflow: ellipsis;
     white-space: nowrap;
 }
+
+// Import partials from `sass_dir` (defaults to `_sass`)
+@import
+"colors"
+;

@@ -1,5 +1,174 @@
-<h2>Hei!</h2>
-<p><a href="#/headings">Headings</a></p>
-<p><a href="#/google">Google</a></p>
-<p><a href="#/type-on-screen">Type On Screen</a></p>
-<p><a href="#/typecast-showcase">Typecast Showcase</a></p>
+<style>
+    /*reset.css*/
+
+    html, body, div, span, applet, object, iframe,
+    h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+    a, abbr, acronym, address, big, cite, code,
+    del, dfn, em, img, ins, kbd, q, s, samp,
+    small, strike, strong, sub, sup, tt, var,
+    b, u, i, center,
+    dl, dt, dd, ol, ul, li,
+    fieldset, form, label, legend,
+    table, caption, tbody, tfoot, thead, tr, th, td,
+    article, aside, canvas, details, embed,
+    figure, figcaption, footer, header, hgroup,
+    menu, nav, output, ruby, section, summary,
+    time, mark, audio, video {
+        margin: 0;
+        padding: 0;
+        border: 0;
+        font-size: 100%;
+        vertical-align: baseline;
+    }
+    /* HTML5 display-role reset for older browsers */
+    article, aside, details, figcaption, figure,
+    footer, header, hgroup, menu, nav, section {
+        display: block;
+    }
+    body {
+        line-height: 1.618em;
+    }
+    ol, ul {
+        list-style: none;
+    }
+    blockquote, q {
+        quotes: none;
+    }
+    blockquote:before, blockquote:after,
+    q:before, q:after {
+        content: '';
+        content: none;
+    }
+    table {
+        border-collapse: collapse;
+        border-spacing: 0;
+    }
+
+</style>
+
+<style>
+    body {
+        padding: 50px 0;
+        font-size: 19px;
+    }
+
+    div.wrapper {
+        margin: 0 auto;
+        display: block;
+        white-space: nowrap;
+        text-align: center;
+        padding-bottom: 20px;
+        min-height: 100%;
+        width: auto;
+        max-width: none;
+    }
+
+    div {
+        text-align: left;
+        #display: inline-block;
+        white-space: normal;
+        vertical-align: top;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        #padding: 0 2%;
+        #max-width: 760px;
+        #width: 760px;
+    }
+
+    h1 {
+        font-size: 5.105em;
+        line-height: 0.928em;
+        text-align: center;
+        text-transform: uppercase;
+    }
+
+    p.intro {
+        font-size: 1.368em;
+        border-top: 1px;
+        border-bottom: 1px;
+        padding: 1.154em;
+        text-align: center;
+        border-style: solid;
+        line-height: 1.5em;
+        margin: 1.038em 0px;
+    }
+
+    p {
+        font-size: 1em;
+        line-height: 1.421em;
+        color: rgba(51, 51, 51, 0.80);
+        margin: 0px 0px 1.421em 0px;
+    }
+
+    h2 {
+        font-size: 1.526em;
+        line-height: 0.931em;
+        margin: 0px 0px 0.931em 0px;
+    }
+
+    p.pullquote {
+        padding-left: 10px;
+        border-style: solid;
+        border-left-width: 3px;
+        color: rgba(51, 51, 51, 1.00);
+        font-size: 1em;
+        line-height: 1.421em;
+        margin: 0px 0px 1.421em 0px;
+    }
+
+    p.author {
+        text-align: center;
+        font-size: 13px;
+        letter-spacing: 2px;
+        margin-top: 27px;
+        text-transform: uppercase;
+    }
+
+    @media only screen and (max-width: 900px) {
+        div {
+            display: block;
+            margin: 0 auto 8em;
+            width: 100%;
+            padding: 0 2em;
+        }
+
+        @media only screen and (max-width: 480px) {
+            body {
+                font-size: 90%;
+            }
+
+            h1 {
+                font-size: 3.75em;
+                line-height: 0.929em;
+            }
+
+            p {
+                font-size: 16px;
+            }
+
+            p.pullquote {
+                font-size: 16px;
+            }
+        }
+    }
+</style>
+
+
+<div class="wrapper">
+    <div>
+        <article>
+            <h1>Hei Mar :-)</h1>
+            <p class="author">~ Noen bilder av Tor Håvard Bieltvedt ~</p>
+            <p class="intro">One of the iconic representations of the digital age is an image of the ubiquitous digital screen, stereotypically represented ...</p>
+
+            <table>
+                <tr>
+                    <td style="vertical-align: middle;"><a ng-click="selectPreviousImage()" style="cursor: hand;"><h2>(-:</h2></a></td>
+                    <td style="vertical-align: middle; text-align: center; padding: 0 40px 0 40px; height: 700px; width: 1300px;"><a ng-click="selectNextImage()" style="cursor: hand;"><img src="{{currentImageUri}}"/></a></td>
+                    <td style="vertical-align: middle;"><a ng-click="selectNextImage()" style="cursor: hand;"><h2>:-)</h2></a></td>
+                </tr>
+            </table>
+        </article>
+    </div>
+</div>
