@@ -2,24 +2,18 @@ var app = angular.module('app', ['ngRoute']);
 
 
 app.config(
-    ['$routeProvider', function($routeProvider) {
-
-    $routeProvider.
-        when('/', {
-            templateUrl: 'app/pages/home.html'
-        }).
-        when('/:page?', {
-            templateUrl: function(params) {
+    ['$routeProvider', function ($routeProvider) {
+        $routeProvider.when('/:page?', {
+            templateUrl: function (params) {
                 var page = resolvePage(params);
 
-                if (!page.open && !loggedIn) {
+                if (!page.open && !isAuthenticated()) {
                     return pagesById['login'].pageUri;
                 }
 
                 return page.pageUri;
             }
-        }).
-        otherwise({
+        }).otherwise({
             redirectTo: '/'
         });
     }]
@@ -31,16 +25,16 @@ app.controller('AppController', function ($scope, $routeParams, $route, $locatio
 
     $scope.currentPageCollection = pages;
 
-    $scope.selectPageById = function(pageId) {
+    $scope.selectPageById = function (pageId) {
         goToUrlForPage(pageId);
     };
 
-    $scope.$on('$routeChangeSuccess', function() {
+    $scope.$on('$routeChangeSuccess', function () {
         $scope.currentPageId = resolvePage($routeParams).id;
-        console.log("URL: " + $location.absUrl() + " | " + window.navigator.userAgent);
+        log();
     });
 
-    $scope.keyPressed = function(event) {
+    $scope.keyPressed = function (event) {
         if (event.which == 37) {
             $scope.selectPreviousImage();
         } else if (event.which == 39) {
@@ -50,26 +44,34 @@ app.controller('AppController', function ($scope, $routeParams, $route, $locatio
 
     $scope.showWrongPasswordMessage = false;
 
-    $scope.passwordChanged = function() {
+    $scope.passwordChanged = function () {
         $scope.showWrongPasswordMessage = false;
     };
 
-    $scope.login = function(password) {
-        var success = password && (password.trim().toLowerCase() === 'marzar' || password.trim().toLowerCase() === 't');
+    $scope.login = function (password) {
+        var success = password && (password.trim().toLowerCase() === 'marzar' || password.trim().toLowerCase() === 'thb');
 
         if (success) {
-            loggedIn = true;
-            console.log("Logged in " + password);
+            authenticatedUser = password;
             $route.reload();
         } else {
             $scope.showWrongPasswordMessage = true;
-            console.log("Log in failed for " + password);
         }
     };
 
     function goToUrlForPage(pageId) {
         $location.path('/' + pageId)
     }
+
+    function log() {
+        writeLogEntry(
+            authenticatedUser,
+            $location.absUrl(),
+            $window.navigator.userAgent,
+            'Image-' + currentImageIndex
+        );
+    }
+
 
     /**
      * Images
@@ -80,20 +82,21 @@ app.controller('AppController', function ($scope, $routeParams, $route, $locatio
     function selectImage(index) {
         currentImageIndex = index;
         $scope.currentImageUri = images[currentImageIndex].uri;
+        log();
     }
 
-    $scope.selectImageById = function(id) {
+    $scope.selectImageById = function (id) {
         $scope.currentImageUri = imagesById[id].uri;
     };
 
-    $scope.selectNextImage = function() {
+    $scope.selectNextImage = function () {
 
         if (currentImageIndex < images.length - 1) {
             selectImage(currentImageIndex + 1);
         }
     };
 
-    $scope.selectPreviousImage = function() {
+    $scope.selectPreviousImage = function () {
         if (currentImageIndex > 0) {
             selectImage(currentImageIndex - 1);
         }
@@ -109,12 +112,16 @@ var pages = [
 ];
 
 
-var loggedIn = true;
+function isAuthenticated() {
+    return authenticatedUser
+}
+
+var authenticatedUser;
 
 
 function mapPageUriById(pages) {
     var map = {};
-    angular.forEach(pages, function(page) {
+    angular.forEach(pages, function (page) {
         map[page.id] = page;
     });
     return map;
@@ -164,7 +171,7 @@ var images = [
 
 function mapById(list) {
     var map = {};
-    angular.forEach(list, function(it) {
+    angular.forEach(list, function (it) {
         map[it.id] = it;
     });
     return map;

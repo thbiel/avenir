@@ -1,3 +1,7 @@
+---
+layout: default
+---
+
 <html ng-app="app" ng-controller="AppController">
     <head>
         <title>Avenir</title>
@@ -11,6 +15,36 @@
         <link href='css/main.css' rel='stylesheet' type='text/css'>
 
         <link href="https://fonts.googleapis.com/css?family=Cantarell" rel="stylesheet">
+
+        <script src="https://www.gstatic.com/firebasejs/3.4.0/firebase.js"></script>
+        <script>
+            // Initialize Firebase
+            var config = {
+                apiKey: '{{site.firebaseApiKey}}',
+                authDomain: '{{site.firebaseAuthDomain}}',
+                databaseURL: '{{site.firebaseDatabaseURL}}',
+                storageBucket: '{{site.firebaseStorageBucket}}',
+                messagingSenderId: '{{site.firebaseMessagingSenderId}}'
+            };
+            firebase.initializeApp(config);
+            var database = firebase.database();
+            var logEntriesRef = database.ref('{{site.firebaseLogEntriesRef}}');
+
+            function writeLogEntry(
+                    user,
+                    url,
+                    userAgent,
+                    image
+            ) {
+                logEntriesRef.push({
+                    timestamp: firebase.database.ServerValue.TIMESTAMP,
+                    user: user ? user : null,
+                    url: url,
+                    useragent: userAgent,
+                    image: image
+                });
+            }
+        </script>
     </head>
 
     <body style="margin: 0; padding: 0;" ng-keydown="keyPressed($event)">

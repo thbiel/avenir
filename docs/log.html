@@ -1,0 +1,62 @@
+---
+layout: default
+---
+
+<html ng-app="app" ng-controller="AppController">
+<head>
+    <title>Log Avenir </title>
+    <script type='text/javascript' src='js/jquery/1.6.1/jquery-1.6.1.min.js'></script>
+
+    <link href='css/main.css' rel='stylesheet' type='text/css'>
+
+    <link href="https://fonts.googleapis.com/css?family=Cantarell" rel="stylesheet">
+
+
+    <script src="https://www.gstatic.com/firebasejs/3.4.0/firebase.js"></script>
+    <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: '{{site.firebaseApiKey}}',
+            authDomain: '{{site.firebaseAuthDomain}}',
+            databaseURL: '{{site.firebaseDatabaseURL}}',
+            storageBucket: '{{site.firebaseStorageBucket}}',
+            messagingSenderId: '{{site.firebaseMessagingSenderId}}'
+        };
+        firebase.initializeApp(config);
+        var database = firebase.database();
+        var logEntriesRef = database.ref('{{site.firebaseLogEntriesRef}}');
+
+        logEntriesRef.on('child_added', function (data) {
+            displayLogEntry(data.val());
+        });
+
+        function displayLogEntry(entry) {
+            $('<tr/>').html(
+                    '<td> | ' + new Date(entry.timestamp) + '</td>' +
+                    '<td> | ' + (entry.user ? entry.user : '-') + '</td>' +
+                    '<td> | ' + entry.url + '</td>' +
+                    '<td> | ' + entry.image + '</td>' +
+                    '<td> | ' + entry.useragent + '</td>'
+            ).prependTo($('#logEntries'));
+        }
+    </script>
+</head>
+
+<body style="margin: 0; padding: 0;">
+    <table cellpadding="0" cellspacing="0" style="width: 100%; height: 100%; margin: 0; padding: 0;">
+        <tr>
+            <td style="width: 100%;  text-align: center;" ng-style="primaryBackgroundStyle" valign="top">
+                <div style="margin-left: 40px; margin-right: 40px; margin-top: 10px;  text-align: center;">
+                    <div style="margin-top: 80px; margin-left: 50px;" ng-style="primaryTextStyle">
+                        <h2 style="text-align: left;">Log {{site.firebaseDatabaseURL}}</h2>
+                        <table>
+                            <tbody id="logEntries"></tbody>
+                        </table>
+                    </div>
+                    <br/>
+                </div>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>
