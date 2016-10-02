@@ -163,25 +163,11 @@
     <p class="author">~ Noen bilder av Tor Håvard Bieltvedt ~</p>
 
     <div class="row">
-        <div class="col-xs-2"></div>
-        <div class="col-xs-8 image-carousel center-content">
+        <div class="col-xs-12 image-carousel center-content">
             <a ng-click="selectPreviousImage()" class="glyphicon glyphicon-chevron-left left-arrow"></a>
             <a ng-click="selectNextImage()" class="image"><img src="{% raw %}{{currentImageUri}}{% endraw %}"/></a>
             <a ng-click="selectNextImage()" class="glyphicon glyphicon-chevron-right right-arrow"></a>
         </div>
-        <div class="col-xs-2"></div>
-    </div>
-
-    <p style="text-align: center;"> ---- </p>
-
-    <div class="row">
-        <div class="col-xs-2"></div>
-        <div class="col-xs-8 image-carousel center-content">
-            <a ng-click="selectPreviousImage()" class="glyphicon glyphicon-chevron-left left-arrow"></a>
-            <a ng-click="selectNextImage()" class="image"><img class="img-responsive" src="{% raw %}{{currentImageUri}}{% endraw %}"/></a>
-            <a ng-click="selectNextImage()" class="glyphicon glyphicon-chevron-right right-arrow"></a>
-        </div>
-        <div class="col-xs-2"></div>
     </div>
 
     <div class="images-invisible-preload">
