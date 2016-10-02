@@ -103,7 +103,7 @@ select {
     }
 
     .image {
-        width: 650px;
+        #width: 650px;
     }
 
     .glyphicon {
@@ -117,6 +117,32 @@ select {
     display: none;
     visibility: hidden;
 }
+
+
+.carousel-inner > .item {
+    height: 650px;
+    position: relative;
+}
+
+.carousel-inner img {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+.carousel-control, .carousel-control:focus, .carousel-control:hover {
+    color: inherit;
+    opacity: 1;
+    background: none !important;
+    filter: none !important;
+    progid: none !important;
+}
+
 
 // Import partials from `sass_dir` (defaults to `_sass`)
 @import
