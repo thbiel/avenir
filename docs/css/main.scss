@@ -1,8 +1,8 @@
 ---
-# Only the main Sass file needs front matter (the dashes are enough)
+    # Front Matter enabled
 ---
 
-body {
+  body {
     font-family: 'Cantarell', sans-serif;
 
     -webkit-font-smoothing: antialiased;
@@ -78,6 +78,44 @@ select {
     padding-bottom: 2px;
     text-overflow: ellipsis;
     white-space: nowrap;
+}
+
+.center-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.image-carousel {
+    height: 650px;
+    text-align: center;
+
+    a {
+        cursor: pointer;
+    }
+
+    .left-arrow {
+        padding-right: 24px;
+    }
+
+    .right-arrow {
+        padding-left: 24px;
+    }
+
+    .image {
+        width: 650px;
+    }
+
+    .glyphicon {
+        font-size: 22px;
+    }
+}
+
+.images-invisible-preload {
+    height: 1px;
+    width: 1px;
+    display: none;
+    visibility: hidden;
 }
 
 // Import partials from `sass_dir` (defaults to `_sass`)

@@ -1,3 +1,7 @@
+---
+    # Front Matter enabled
+---
+
 <style>
     /*reset.css*/
 
@@ -154,33 +158,35 @@
     }
 </style>
 
-<table cellpadding="0" cellspacing="0" style="width: 100%; height: 100%; margin: 0; padding: 0;">
-    <tr>
-        <td height="730" style="width: 100%;  text-align: center;" ng-style="primaryBackgroundStyle" valign="top">
-            <div style="margin-left: 40px; margin-right: 40px; margin-top: 10px;  text-align: center;">
-                <table cellpadding="0" cellspacing="0">
-                    <div style="margin-top: 80px; margin-left: 50px; width: 940px; text-align: center;" ng-style="primaryTextStyle">
-                        <div class="wrapper">
-                            <div>
-                                <article>
-                                    <h1>Hei Mar :-)</h1>
-                                    <p class="author">~ Noen bilder av Tor Håvard Bieltvedt ~</p>
-                                    <p class="intro">One of the iconic representations of the digital age is an image of the ubiquitous digital screen, stereotypically represented ...</p>
+<article style="background-color: blanchedalmond;">
+    <h1>Hei Mar :-)</h1>
+    <p class="author">~ Noen bilder av Tor Håvard Bieltvedt ~</p>
 
-                                    <table>
-                                        <tr>
-                                            <td style="vertical-align: middle;"><a ng-click="selectPreviousImage()" style="cursor: hand;"><h2>(-:</h2></a></td>
-                                            <td style="vertical-align: middle; text-align: center; padding: 0 40px 0 40px; height: 700px; width: 1300px;"><a ng-click="selectNextImage()" style="cursor: hand;"><img src="{{currentImageUri}}"/></a></td>
-                                            <td style="vertical-align: middle;"><a ng-click="selectNextImage()" style="cursor: hand;"><h2>:-)</h2></a></td>
-                                        </tr>
-                                    </table>
-                                </article>
-                            </div>
-                        </div>
-                    </div>
-                </table>
-                <br/>
-            </div>
-        </td>
-    </tr>
-</table>
+    <div class="row">
+        <div class="col-xs-2"></div>
+        <div class="col-xs-8 image-carousel center-content">
+            <a ng-click="selectPreviousImage()" class="glyphicon glyphicon-chevron-left left-arrow"></a>
+            <a ng-click="selectNextImage()" class="image"><img src="{% raw %}{{currentImageUri}}{% endraw %}"/></a>
+            <a ng-click="selectNextImage()" class="glyphicon glyphicon-chevron-right right-arrow"></a>
+        </div>
+        <div class="col-xs-2"></div>
+    </div>
+
+    <p style="text-align: center;"> ---- </p>
+
+    <div class="row">
+        <div class="col-xs-2"></div>
+        <div class="col-xs-8 image-carousel center-content">
+            <a ng-click="selectPreviousImage()" class="glyphicon glyphicon-chevron-left left-arrow"></a>
+            <a ng-click="selectNextImage()" class="image"><img class="img-responsive" src="{% raw %}{{currentImageUri}}{% endraw %}"/></a>
+            <a ng-click="selectNextImage()" class="glyphicon glyphicon-chevron-right right-arrow"></a>
+        </div>
+        <div class="col-xs-2"></div>
+    </div>
+
+    <div class="images-invisible-preload">
+        {% for image in site.data.images.images %}
+        <img src="{{image.uri}}"/>
+        {% endfor %}
+    </div>
+</article>
