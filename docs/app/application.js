@@ -1,7 +1,3 @@
----
-    # Front Matter enabled
----
-
 var app = angular.module('app', ['ngRoute']);
 
 
@@ -35,16 +31,8 @@ app.controller('AppController', function ($scope, $routeParams, $route, $locatio
 
     $scope.$on('$routeChangeSuccess', function () {
         $scope.currentPageId = resolvePage($routeParams).id;
-        log();
+        log(1);
     });
-
-    $scope.keyPressed = function (event) {
-        if (event.which == 37) {
-            $scope.selectPreviousImage();
-        } else if (event.which == 39) {
-            $scope.selectNextImage();
-        }
-    };
 
     $scope.showWrongPasswordMessage = false;
 
@@ -63,11 +51,59 @@ app.controller('AppController', function ($scope, $routeParams, $route, $locatio
         }
     };
 
+    $scope.keyPressed = function (event) {
+        if (event.which == 37) {
+            selectPreviousImage();
+        } else if (event.which == 39) {
+            selectNextImage();
+        }
+    };
+
+    $scope.carouselLoaded = function(elementId) {
+        setCarouselElement(elementId);
+
+        carouselElement.on('slide.bs.carousel', function () {
+            var imageIndex = carouselElement.find('div.active').index() + 1;
+            log(imageIndex);
+        });
+    };
+
     function goToUrlForPage(pageId) {
         $location.path('/' + pageId)
     }
 
-    function log() {
+    /**
+     * Images
+     */
+    var carouselElement;
+
+    function setCarouselElement(elementId) {
+        var element = document.getElementById(elementId);
+        if (!element) {
+            throw new Error('Element \'#' + elementId + '\'  is undefined.');
+        }
+
+        carouselElement = $(element);
+    }
+
+    function getCarouselElement() {
+        if (!carouselElement) {
+            throw new Error('Carousel element is not set.');
+        }
+
+        return carouselElement;
+    }
+
+    function selectNextImage() {
+        getCarouselElement().carousel("next");
+    }
+
+    function selectPreviousImage() {
+        getCarouselElement().carousel("prev");
+    }
+
+
+    function log(currentImageIndex) {
         writeLogEntry(
             authenticatedUser,
             $location.absUrl(),
@@ -75,36 +111,6 @@ app.controller('AppController', function ($scope, $routeParams, $route, $locatio
             'Image-' + currentImageIndex
         );
     }
-
-
-    /**
-     * Images
-     */
-    var currentImageIndex = 0;
-    $scope.currentImageUri = images[currentImageIndex].uri;
-
-    function selectImage(index) {
-        currentImageIndex = index;
-        $scope.currentImageUri = images[currentImageIndex].uri;
-        log();
-    }
-
-    $scope.selectImageById = function (id) {
-        $scope.currentImageUri = imagesById[id].uri;
-    };
-
-    $scope.selectNextImage = function () {
-
-        if (currentImageIndex < images.length - 1) {
-            selectImage(currentImageIndex + 1);
-        }
-    };
-
-    $scope.selectPreviousImage = function () {
-        if (currentImageIndex > 0) {
-            selectImage(currentImageIndex - 1);
-        }
-    };
 });
 
 
@@ -149,24 +155,3 @@ function resolvePage(routeParams) {
 
     return page;
 }
-
-
-/**
- * Images
- */
-var images = [
-{% for image in site.data.images.images %}
-    {id: '{{image.id}}', uri: '{{image.uri}}'},
-{% endfor %}
-];
-
-
-function mapById(list) {
-    var map = {};
-    angular.forEach(list, function (it) {
-        map[it.id] = it;
-    });
-    return map;
-}
-
-var imagesById = mapById(images);

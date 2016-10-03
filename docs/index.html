@@ -1,5 +1,5 @@
 ---
-    # Front Matter enabled
+# Front Matter enabled
 ---
 
 <!DOCTYPE html>
@@ -50,6 +50,7 @@
                     useragent: userAgent,
                     image: image
                 });
+                console.log("Logged: " + image);
             }
         </script>
     </head>
@@ -57,7 +58,7 @@
     <body ng-keydown="keyPressed($event)">
         <div class="container">
             <div class="row" style="padding: 0; margin: 0;">
-                <div class="col-xs-12" style="padding: 0; margin: 0;" ng-view></div>
+                <div class="col-xs-12 col-sm-12" style="padding: 0; margin: 0;" ng-view></div>
             </div>
         </div>
     </body>
