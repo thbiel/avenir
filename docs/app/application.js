@@ -68,6 +68,10 @@ app.controller('AppController', function ($scope, $routeParams, $route, $locatio
         });
     };
 
+    $scope.screenSize = function () {
+        return screen.width + " x " + screen.height;
+    };
+
     function goToUrlForPage(pageId) {
         $location.path('/' + pageId)
     }
