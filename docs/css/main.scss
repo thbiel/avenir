@@ -11,10 +11,14 @@ body {
     font-style:   normal;
     font-weight:  normal;
 
+          font-size: 19px;
 }
 
 h1 {
-    font-size: 99px;
+    font-size: 5.105em;
+    line-height: 0.928em;
+    text-align: center;
+    text-transform: uppercase;
 }
 
 h2 {
@@ -44,6 +48,22 @@ a {
 
 table {
     color: inherit;
+}
+
+p.author {
+    text-align: center;
+    font-size: 13px;
+    letter-spacing: 2px;
+    margin-top: 27px;
+    text-transform: uppercase;
+}
+
+p.author {
+    text-align: center;
+    font-size: 13px;
+    letter-spacing: 2px;
+    margin-top: 27px;
+    text-transform: uppercase;
 }
 
 .center-content {
@@ -85,39 +105,44 @@ table {
 }
 
 
-.carousel-inner > .item {
-    height: 650px;
-    position: relative;
-}
-
-.carousel-inner img {
-    position: absolute;
-    top: 50%;
-    left: 0;
-    right: 0;
-    -webkit-transform: translateY(-50%);
-    -moz-transform: translateY(-50%);
-    -o-transform: translateY(-50%);
-    transform: translateY(-50%);
-}
 
 .carousel-control, .carousel-control:focus, .carousel-control:hover {
-    color: inherit;
+    color: white;
     opacity: 1;
     background: none !important;
     filter: none !important;
     progid: none !important;
 }
 
-.col-xs-12 {
-    background-color: red;
-}
 
-.col-sm-12 {
-    background-color: #00476E;
+@media (min-width: 650px) {
+    .carousel {
+        background-color: green;
+    }
+
+    .carousel-inner > .item {
+        height: 650px;
+        position: relative;
+    }
+
+    .carousel-inner img {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        right: 0;
+        -webkit-transform: translateY(-50%);
+        -moz-transform: translateY(-50%);
+        -o-transform: translateY(-50%);
+        transform: translateY(-50%);
+    }
+
+    .carousel-control, .carousel-control:focus, .carousel-control:hover {
+        color: inherit;
+    }
 }
 
 // Import partials from `sass_dir` (defaults to `_sass`)
 @import
     "colors"
 ;
+

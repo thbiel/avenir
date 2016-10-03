@@ -1,39 +1,11 @@
 ---
     # Front Matter enabled
 ---
-<style>
-    body {
-        font-size: 19px;
-    }
-
-    h1 {
-        font-size: 5.105em;
-        line-height: 0.928em;
-        text-align: center;
-        text-transform: uppercase;
-    }
-
-    p {
-        font-size: 1em;
-        line-height: 1.421em;
-        color: rgba(51, 51, 51, 0.80);
-        margin: 0px 0px 1.421em 0px;
-    }
-
-    p.author {
-        text-align: center;
-        font-size: 13px;
-        letter-spacing: 2px;
-        margin-top: 27px;
-        text-transform: uppercase;
-    }
-</style>
-
 <article style="background-color: blanchedalmond;">
     <h1>Hei Mar :-)</h1>
     <p class="author">~ Noen bilder av Tor Håvard Bieltvedt ~</p>
 
-    <div id="myCarousel" class="carousel" style="background-color: cornflowerblue;" data-interval="0" data-keyboard="false" data-wrap="false">
+    <div id="bildekarusell" class="carousel" style="_background-color: cornflowerblue;" data-interval="0" data-keyboard="false" data-wrap="false">
         <div class="carousel-inner" role="listbox">
             {% for image in site.data.images.images %}
             <div class="item {% if forloop.first == true %}active{% endif %}">
@@ -42,10 +14,10 @@
             {% endfor %}
         </div>
 
-        <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+        <a class="left carousel-control" href="#bildekarusell" role="button" data-slide="prev">
             <span class="glyphicon glyphicon-chevron-left" aria-hidden="false"></span>
         </a>
-        <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+        <a class="right carousel-control" href="#bildekarusell" role="button" data-slide="next">
             <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
         </a>
     </div>
@@ -57,4 +29,4 @@
     </div>
 </article>
 
-<script ng-init="carouselLoaded('myCarousel')"></script>
+<script ng-init="carouselLoaded('bildekarusell')"></script>
