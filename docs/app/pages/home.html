@@ -30,3 +30,15 @@
 </article>
 
 <script ng-init="carouselLoaded('bildekarusell')"></script>
+
+<script>
+    $(document).ready(function() {
+        $("#bildekarusell").swiperight(function() {
+            $(this).carousel('prev');
+        });
+
+        $("#bildekarusell").swipeleft(function() {
+            $(this).carousel('next');
+        });
+    });
+</script>

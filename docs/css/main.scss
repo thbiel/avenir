@@ -10,8 +10,7 @@ body {
 
     font-style:   normal;
     font-weight:  normal;
-
-          font-size: 19px;
+    font-size: 19px;
 }
 
 h1 {
@@ -66,89 +65,68 @@ p.author {
     text-transform: uppercase;
 }
 
-.center-content {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.image-carousel {
-    height: 650px;
-    text-align: center;
-
-    a {
-        cursor: pointer;
-    }
-
-    .left-arrow {
-        padding-right: 24px;
-    }
-
-    .right-arrow {
-        padding-left: 24px;
-    }
-
-    .image {
-        #width: 650px;
-    }
-
-    .glyphicon {
-        font-size: 22px;
-    }
+.container {
+    min-width: 320px;
 }
 
 .images-invisible-preload {
-    height: 1px;
-    width: 1px;
-    display: none;
-    visibility: hidden;
-}
-
-
-
-.carousel-control, .carousel-control:focus, .carousel-control:hover {
-    color: white;
-    opacity: 1;
-    background: none !important;
-    filter: none !important;
-    progid: none !important;
-}
-
-// Iphone 5: 320 x 568
-@media (max-width: 650px) {
-    h1 {
-        font-size: 2em;
-    }
-}
-
-@media (min-width: 650px) {
-    .carousel {
-        background-color: green;
+        height: 1px;
+        width: 1px;
+        display: none;
+        visibility: hidden;
     }
 
-    .carousel-inner > .item {
-        height: 650px;
-        position: relative;
-    }
 
-    .carousel-inner img {
-        position: absolute;
-        top: 50%;
-        left: 0;
-        right: 0;
-        -webkit-transform: translateY(-50%);
-        -moz-transform: translateY(-50%);
-        -o-transform: translateY(-50%);
-        transform: translateY(-50%);
-    }
 
     .carousel-control, .carousel-control:focus, .carousel-control:hover {
-        color: inherit;
+        color: white;
+        opacity: 1;
+        background: none !important;
+        filter: none !important;
+        progid: none !important;
     }
-}
+
+    .carousel-control.left {
+        margin-left: 20px;
+    }
+    .carousel-control.right {
+        margin-right: 20px;
+    }
+
+
+    @media (max-width: 768px) {
+        h1 {
+            font-size: 2em;
+        }
+    }
+
+    // Greater than tablet:
+    @media (min-width: 768px) {
+        .carousel-inner > .item {
+            height: 650px;
+            position: relative;
+        }
+
+        .carousel-inner img {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            -webkit-transform: translateY(-50%);
+            -moz-transform: translateY(-50%);
+            -o-transform: translateY(-50%);
+            transform: translateY(-50%);
+        }
+    }
+
+    @media (min-width: 992px) {
+        .carousel-control, .carousel-control:focus, .carousel-control:hover {
+            color: inherit;
+        }
+    }
+
 
 // Import partials from `sass_dir` (defaults to `_sass`)
 @import
     "colors"
 ;
-
