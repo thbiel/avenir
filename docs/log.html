@@ -25,7 +25,7 @@
         var database = firebase.database();
         var logEntriesRef = database.ref('{{site.firebaseLogEntriesRef}}');
 
-        logEntriesRef.on('child_added', function (data) {
+        logEntriesRef.limitToLast(100).on('child_added', function (data) {
             displayLogEntry(data.val());
         });
 
@@ -35,6 +35,7 @@
                     '<td> | ' + (entry.user ? entry.user : '-') + '</td>' +
                     '<td> | ' + entry.url + '</td>' +
                     '<td> | ' + entry.image + '</td>' +
+                    '<td> | ' + entry.screenDimension + '</td>' +
                     '<td> | ' + entry.useragent + '</td>'
             ).prependTo($('#logEntries'));
         }

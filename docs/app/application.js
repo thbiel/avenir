@@ -62,7 +62,7 @@ app.controller('AppController', function ($scope, $routeParams, $route, $locatio
     $scope.carouselLoaded = function(elementId) {
         setCarouselElement(elementId);
 
-        carouselElement.on('slide.bs.carousel', function () {
+        carouselElement.on('slid.bs.carousel', function () {
             var imageIndex = carouselElement.find('div.active').index() + 1;
             log(imageIndex);
         });
@@ -108,10 +108,12 @@ app.controller('AppController', function ($scope, $routeParams, $route, $locatio
 
 
     function log(currentImageIndex) {
+        var screenDimension = screen.width + " x " + screen.height;
         writeLogEntry(
             authenticatedUser,
             $location.absUrl(),
             $window.navigator.userAgent,
+            screenDimension,
             'Image-' + currentImageIndex
         );
     }
