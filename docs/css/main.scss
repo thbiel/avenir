@@ -12,8 +12,9 @@ $primary-font-stack: 'Cantarell', sans-serif;
 
 
 body {
-    background-color: $primary-background-color;
-    font-family: $primary-font-stack;
+    color:              $primary-font-color;
+    background-color:   $primary-background-color;
+    font-family:        $primary-font-stack;
 
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
