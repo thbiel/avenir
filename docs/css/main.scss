@@ -1,9 +1,19 @@
 ---
     # Front Matter enabled
 ---
+$primary-font-color: #00476E;
+$secondary-font-color: #78797a;
+
+$primary-background-color: #FFFFFF;
+
+$button-background-color: #008DD0;
+
+$primary-font-stack: 'Cantarell', sans-serif;
+
 
 body {
-    font-family: 'Cantarell', sans-serif;
+    background-color: $primary-background-color;
+    font-family: $primary-font-stack;
 
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -50,6 +60,7 @@ table {
 }
 
 p.author {
+    color: $secondary-font-color;
     text-align: center;
     font-size: 13px;
     letter-spacing: 2px;
@@ -57,13 +68,29 @@ p.author {
     text-transform: uppercase;
 }
 
-p.author {
-    text-align: center;
-    font-size: 13px;
-    letter-spacing: 2px;
-    margin-top: 27px;
-    text-transform: uppercase;
+.center-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
+
+.form {
+    font-size: 32px;
+
+    input[type="password"], input[type="text"] {
+        border: 1px solid $primary-font-color;
+    }
+    input[type="submit"] {
+        color: white;
+        background-color: $button-background-color;
+    }
+}
+
+#login-form-container {
+    @extend .center-content;
+    height: 400px;
+}
+
 
 .container {
     min-width: 320px;
@@ -74,59 +101,64 @@ p.author {
         width: 1px;
         display: none;
         visibility: hidden;
+}
+
+
+.carousel-control, .carousel-control:focus, .carousel-control:hover {
+    color: white;
+    opacity: 1;
+    background: none !important;
+    filter: none !important;
+    progid: none !important;
+}
+
+.carousel-control.left {
+    margin-left: -5px;
+}
+.carousel-control.right {
+    margin-right: -5px;
+}
+
+
+
+// Smaller than tablet:
+@media (max-width: 767px) {
+    h1 {
+        font-size: 2em;
     }
 
+    #login-form {
+        width: 300px;
+        font-size: 1em;
 
+        input {
+            width: 100%;
+            margin-bottom: 10px;
+        }
+    }
+}
 
+// Greater than tablet:
+@media (min-width: 768px) {
+    .carousel-inner > .item {
+        height: 650px;
+        position: relative;
+    }
+
+    .carousel-inner img {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        right: 0;
+        -webkit-transform: translateY(-50%);
+        -moz-transform: translateY(-50%);
+        -o-transform: translateY(-50%);
+        transform: translateY(-50%);
+    }
+}
+
+@media (min-width: 992px) {
     .carousel-control, .carousel-control:focus, .carousel-control:hover {
-        color: white;
-        opacity: 1;
-        background: none !important;
-        filter: none !important;
-        progid: none !important;
+        color: inherit;
     }
-
-    .carousel-control.left {
-        margin-left: -5px;
-    }
-    .carousel-control.right {
-        margin-right: -5px;
-    }
-
-
-    @media (max-width: 768px) {
-        h1 {
-            font-size: 2em;
-        }
-    }
-
-    // Greater than tablet:
-    @media (min-width: 768px) {
-        .carousel-inner > .item {
-            height: 650px;
-            position: relative;
-        }
-
-        .carousel-inner img {
-            position: absolute;
-            top: 50%;
-            left: 0;
-            right: 0;
-            -webkit-transform: translateY(-50%);
-            -moz-transform: translateY(-50%);
-            -o-transform: translateY(-50%);
-            transform: translateY(-50%);
-        }
-    }
-
-    @media (min-width: 992px) {
-        .carousel-control, .carousel-control:focus, .carousel-control:hover {
-            color: inherit;
-        }
-    }
-
-
-// Import partials from `sass_dir` (defaults to `_sass`)
-@import
-    "colors"
-;
+}

@@ -129,7 +129,7 @@ var pages = [
 
 
 function isAuthenticated() {
-    return !authenticatedUser
+    return authenticatedUser
 }
 
 var authenticatedUser;
