@@ -1,0 +1,8 @@
+<div id="login-form-container">
+    <form id="login-form" class="form" novalidate ng-submit="login(password)">
+        <label for="password">Kode:</label>
+        <input type="text" id="password" ng-change="passwordChanged()" ng-model="password" autofocus/>
+        <input type="submit" value="Logg inn"/>
+        <p><span ng-show="showWrongPasswordMessage">Feil kode - prøv igjen!</span>&nbsp;</p>
+    </form>
+</div>

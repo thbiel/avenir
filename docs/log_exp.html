@@ -1,0 +1,101 @@
+---
+
+---
+
+<html ng-app="app" ng-controller="AppController">
+<head>
+    <title>Log Avenir </title>
+    <script type='text/javascript' src='js/jquery/1.6.1/jquery-1.6.1.min.js'></script>
+
+    <link href='css/main.css' rel='stylesheet' type='text/css'>
+
+    <link href="https://fonts.googleapis.com/css?family=Cantarell" rel="stylesheet">
+
+    <script src="https://www.gstatic.com/firebasejs/3.4.0/firebase.js"></script>
+    <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: '{{site.firebaseApiKey}}',
+            authDomain: '{{site.firebaseAuthDomain}}',
+            databaseURL: '{{site.firebaseDatabaseURL}}',
+            storageBucket: '{{site.firebaseStorageBucket}}',
+            messagingSenderId: '{{site.firebaseMessagingSenderId}}'
+        };
+        firebase.initializeApp(config);
+        var database = firebase.database();
+        var logEntriesRef = database.ref('{{site.firebaseLogEntriesRef}}');
+
+        logEntriesRef.limitToLast(100).on('child_added', function (data) {
+            displayLogEntry(data.val());
+        });
+
+        function displayLogEntry(entry) {
+            $('<tr/>').html(
+                    '<td> | ' + new Date(entry.timestamp) + '</td>' +
+                    '<td> | ' + (entry.user ? entry.user : '-') + '</td>' +
+                    '<td> | ' + entry.url + '</td>' +
+                    '<td> | ' + entry.image + '</td>' +
+                    '<td> | ' + entry.screenDimension + '</td>' +
+                    '<td> | ' + entry.useragent + '</td>' +
+                    '<td> | ' + entry.version + '</td>'
+            ).prependTo($('#logEntries'));
+        }
+
+
+        // Create `myApp` namespace.
+        window.myApp = {
+            // Function to use for the `focus` event.
+            onFocus: function () {
+                // Append message to the `body` element.
+                document.body.appendChild(
+                        document.createTextNode('The window has focus.'));
+                // Add a line break.
+                document.body.appendChild(document.createElement('br'));
+            },
+            // Function to use for the `blur` event.
+            onBlur: function () {
+                // Append message to the `body` element.
+                document.body.appendChild(
+                        document.createTextNode('The window has lost focus.'));
+                // Add a line break.
+                document.body.appendChild(document.createElement('br'));
+            }
+        };
+
+        /* Detect if the browser supports `addEventListener`
+         Complies with DOM Event specification. */
+        if(window.addEventListener) {
+            // Handle window's `load` event.
+            window.addEventListener('load', function () {
+                // Wire up the `focus` and `blur` event handlers.
+                window.addEventListener('focus', window.myApp.onFocus);
+                window.addEventListener('blur', window.myApp.onBlur);
+            });
+        }
+    </script>
+
+    <style>
+        td {
+            white-space: nowrap;
+        }
+    </style>
+</head>
+
+<body style="margin: 0; padding: 0;">
+    <table cellpadding="0" cellspacing="0" style="width: 100%; height: 100%; margin: 0; padding: 0;">
+        <tr>
+            <td style="width: 100%;  text-align: center;" ng-style="primaryBackgroundStyle" valign="top">
+                <div style="margin-left: 40px; margin-right: 40px; margin-top: 10px;  text-align: center;">
+                    <div style="margin-top: 80px; margin-left: 50px;" ng-style="primaryTextStyle">
+                        <h2 style="text-align: left;">Log</h2>
+                        <table>
+                            <tbody id="logEntries"></tbody>
+                        </table>
+                    </div>
+                    <br/>
+                </div>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

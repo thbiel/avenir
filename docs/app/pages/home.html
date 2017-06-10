@@ -1,0 +1,133 @@
+---
+    # Front Matter enabled
+---
+<article style="_background-color: blanchedalmond;">
+    <h1>Hei!</h1>
+    <p>&nbsp;</p>
+    <div id="bildekarusell" class="carousel" style="_background-color: cornflowerblue;" data-interval="0" data-keyboard="false" data-wrap="false">
+        <div class="carousel-inner" role="listbox">
+            {% for image in site.data.images.images %}
+            <div class="item {% if forloop.first == true %}active{% endif %}">
+                <img src="{{image.uri}}" class="center-block">
+            </div>
+            {% endfor %}
+        </div>
+
+        <a class="left carousel-control" href="#bildekarusell" role="button" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left" aria-hidden="false"></span>
+        </a>
+        <a class="right carousel-control" href="#bildekarusell" role="button" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        </a>
+    </div>
+
+    <div class="images-invisible-preload">
+        {% for image in site.data.images.images %}
+        <img src="{{image.uri}}"/>
+        {% endfor %}
+    </div>
+</article>
+
+<script ng-init="carouselLoaded('bildekarusell')"></script>
+
+<script>
+    $(document).ready(function() {
+        $("#bildekarusell").swiperight(function() {
+            $(this).carousel('prev');
+        });
+
+        $("#bildekarusell").swipeleft(function() {
+            $(this).carousel('next');
+        });
+    });
+</script>
+
+
+
+<div id="om-meg">
+    <h3>Litt fakta om meg</h3>
+    <ul>
+        <li>Heter Tor Håvard</li>
+        <li>40 år</li>
+        <li>Bor i Ski sentrum (20 min. med tog fra Oslo)</li>
+        <li>Har ikke barn</li>
+        <li>Høyde 180 cm, normal kroppsbygning</li>
+        <li>Utdannet sivilingeniør IT fra NTNU</li>
+        <li>Jobber som IT-konsulent i mitt eget firma</li>
+        <li>God økonomi</li>
+        <li>Røyker ikke</li>
+        <li>Alkoholkonsum: Moderat</li>
+        <li>Ikke religiøs</li>
+        <li>Politisk ståsted: Sentrum-venstre (har lokalpolitisk verv i Senterpartiet)</li>
+    </ul>
+
+    <h3>Hva liker jeg å bruke fritiden min på?</h3>
+    <ul>
+        <li>Være sammen med venner/familie/fadderbarn</li>
+        <li>Trening (løping, fotball, tennis, langrenn)</li>
+        <li>Følge med på sport, spesielt fotball og vinteridrett</li>
+        <li>Musikk (har en variert musikksmak, man absolutt ikke altetende...)</li>
+        <li>Gå på konserter</li>
+        <li>Gå på kino</li>
+        <li>Reise (Er ikke noen “turbo-turist” som må oppleve alt mulig i hele verden, men har reist ganske mye den siste tiden. Liker best å reise i forbindelse med konkrete aktiviteter, eksempelvis slikke sol eller dra på konsert/sportsarrangement/besøk)</li>
+        <li>En bytur i ny og ne</li>
+        <li>Hjemmekvelder i sofaen</li>
+        <li>Gode samtaler</li>
+        <li>Ski/snowboard</li>
+        <li>En tur i skog og mark og fjell en gang i mellom (men det er ikke akkurat noe jeg driver med hver eneste helg)</li>
+        <li>Fotografering</li>
+    </ul>
+
+    <div style="background-color: #2E373E; color: white; padding: 5px 40px 5px 40px; margin-top: 60px; margin-bottom: 60px; font-family: 'Roboto Slab', serif; font-style: italic;">
+        <p class="pullquote" style="line-height: 2;">
+            Om du skulle være interessert i å bli bedre kjent med meg, så er det jo mest effektivt å bare møtes...<br/>Foreslår i så fall å ta en kaffe eller lignende i Oslo et eller annet sted ;-) Kontakt meg på e-post <span style="font-style: normal; font-weight: normal;">th@biel.no</span>
+        </p>
+    </div>
+
+    <h3>Hvordan vil vennene mine beskrive meg?</h3>
+    <p>Jeg tror vennene mine vil beskrive meg omtrent slik:<br/>
+        <i>Snill og omtenksom mann som er litt sjenert, men som også kan bli veldig engasjert...</i>
+    </p>
+
+    <h3>Hvilke egenskaper setter jeg aller mest pris på hos andre?</h3>
+    <ul>
+        <li>Positiv innstilling, godt humør :-)</li>
+        <li>Glimt i øyet ;-)</li>
+        <li>Pålitelighet</li>
+        <li>Ærlighet og oppriktighet (hvis man sier hva man faktisk mener, og står for det, så er det helt greit for meg at man kan være uenig om ting)</li>
+        <li>Humor</li>
+    </ul>
+
+    <h3>Hva slags mennesker liker jeg absolutt ikke?</h3>
+    <ul>
+        <li>Egoistiske/selvsentrerte :-(</li>
+        <li>Overfladiske :-(</li>
+        <li>Sytete, klagete grinebitere som alltid må fokusere på negative ting :-(</li>
+        <li>Intolerante :-(</li>
+    </ul>
+    <p>Er du fan av Israelske myndigheter, Donald Trump eller Vladimir Putin så er vi nok heller ingen god match...</p>
+
+    <h3>Om forhold</h3>
+    <ul>
+        <li>Jeg er på utkikk etter en å dele resten av livet med, om ting skulle klaffe...</li>
+        <li>For meg er det viktigste i et forhold at man har den gode kjemien og et vennskap som gjør hverdagene litt lysere :-)</li>
+        <!--<li>Barn? Kanskje</li>-->
+        <li>Jeg innbiller meg at jeg har noen egenskaper som er kommer godt med i et forhold, som at jeg er snill og omsorgsfull, flink til å lytte og absolutt trofast. På den annen side så må jeg nok innrømme at jeg av natur ikke er den aller livligste personen her i verden.</li>
+    </ul>
+
+    <h3>Min livsfilosofi</h3>
+    <p class="pullquote" style="font-style: italic; margin-top: 30px;">Søk å finne den gyldne middelvei - for mye og for lite forderver alt!</p>
+
+    <h3>Jobb og utdanning</h3>
+    <ul>
+        <li>Etter endt utdannelse som sivilingeniør innen IT fra NTNU begynte jeg å jobbe som IT-konsulent i Bekk Consulting for en del år siden. Etter fem år der gikk turen videre til en stilling som IT-arkitekt i Gjensidige Pensjon og Sparing,
+        hvor jeg jobbet med teknisk arkitektur og teknisk prosjektledelse. Også der var jeg i fem år før jeg i 2010, med en viss spenning, tok steget ut og startet for meg selv som selvstendig IT-konsulent. Det har heldigvis gått bra, så jeg driver fremdeles mitt eget lille firma og trives godt med det.
+        Jobben går ut på at jeg leies inn av kunder til å bistå i utvikling av nye IT-prosjekter.</li>
+        <li>For øvrig har jeg etter en del år i yrkeslivet funnet ut at det å finne den riktige balansen mellom jobb og fritid er helt essensielt for å kunne trives godt - og føler jeg har blitt ganske god på det etterhvert.</li>
+    </ul>
+
+
+    <h3>Hvorfor i alle dager har jeg laget denne lukkede siden?</h3>
+    <p>Det er fordi jeg ikke er kjempekomfortabel med å utlevere meg selv på en åpen dating-nettside ;-)</p>
+    <div id="signature" style="text-align: center; margin-top: 80px;"><img src="images/signatur_blue_w260.png"></div>
+</div>
